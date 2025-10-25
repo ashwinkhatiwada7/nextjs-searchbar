@@ -12,7 +12,7 @@ export default async function SearchResult({ query }: { query: string }) {
             WHERE search_vector @@ plainto_tsquery('english',${query}) limit 5; `;
 
   if (data.length === 0) return <p>No data found!</p>;
-  console.log(data);
+
   return (
     <>
       <div>

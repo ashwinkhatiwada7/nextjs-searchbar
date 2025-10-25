@@ -17,7 +17,7 @@ export default function SearchInput() {
   const router = useRouter();
   const params = useSearchParams();
   const pathname = usePathname();
-  const [query, setQuery] = useState<string>("");
+  const [query, setQuery] = useState<string>(params.get("q")?.toString() || "");
   const deboucedRef = useRef<NodeJS.Timeout>(null);
 
   const handleChange = (term: string) => {
@@ -46,8 +46,9 @@ export default function SearchInput() {
       <div className=" m-auto text-center mb-3 font-bold">
         Live Search as user type with Debouncing concept
       </div>
-      <InputGroup className=" border-2 h-12">
+      <InputGroup className=" border-2 h-12 shadow-2xl">
         <InputGroupInput
+          className=""
           value={query}
           onChange={(e) => {
             handleChange(e.target.value);
